@@ -29,17 +29,20 @@ export function promptUserForChoice() {
           spinner.succeed(chalk.green(" Active tasks loaded successfully!"));
           break;
         case "Get Finished Tasks":
-          console.log(chalk.yellow(" Not implemented yet"));
+          spinner.warn(chalk.yellow(" Get Finished Tasks, Not implemented yet"));
+          spinner.stop();
           break;
         case "Get All Tasks":
-          console.log(chalk.yellow(" Not implemented yet"));
+          spinner.warn(chalk.yellow(" Get All Tasks, Not implemented yet"));
+          spinner.stop();
           break;
         case "Sync Tasks":
           await syncTasksAndNotify();
-          spinner.succeed(chalk.green(" Active tasks loaded successfully!"));
+          spinner.succeed(chalk.green(" Sync tasks successfully!"));
           break;
         default:
-          console.log(chalk.red("Invalid choice!"));
+          spinner.fail(chalk.red("Invalid choice!"));
+          spinner.stop();
           break;
       }
     });
