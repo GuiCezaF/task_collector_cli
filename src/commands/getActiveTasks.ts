@@ -13,6 +13,10 @@ export function getActiveTasksCommand(program: Command) {
 
       try {
         const activeTasks = await getActiveTasks();
+        if (activeTasks.length === 0){
+          console.log(chalk.yellow("No active tasks found"));
+          return;
+        }
         const activeData = [
           ["Title", "Project", "Priority", "Due Date"],
           ...activeTasks.map(task => [task.title, task.project, task.priority, task.dueDate])
